@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{3019C851-E2A2-4AD9-B151-2C717649056A}|Default">
+  <MonoDevelop.Ide.ItemProperties.TrainStation PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TrainStation/Deb.cs">
+    <Files>
+      <File FileName="TrainStation/MainWindow.cs" Line="29" Column="9" />
+      <File FileName="TrainStation/Station.cs" Line="13" Column="40" />
+      <File FileName="TrainStation/Passanger.cs" Line="30" Column="9" />
+      <File FileName="TrainStation/Deb.cs" Line="14" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TrainStation" expanded="True">
+            <Node name="TrainStation" expanded="True">
+              <Node name="Deb.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

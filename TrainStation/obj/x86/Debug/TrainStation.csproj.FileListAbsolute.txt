@@ -1,0 +1,9 @@
+/home/maks/Prog/univer/пркз/TrainStation/TrainStation/TrainStation/obj/x86/Debug/TrainStation.csprojAssemblyReference.cache
+/home/maks/Prog/univer/пркз/TrainStation/TrainStation/TrainStation/obj/x86/Debug/TrainStation.csproj.CoreCompileInputs.cache
+/home/maks/Prog/univer/пркз/TrainStation/TrainStation/TrainStation/bin/Debug/TrainStation.exe
+/home/maks/Prog/univer/пркз/TrainStation/TrainStation/TrainStation/bin/Debug/TrainStation.pdb
+/home/maks/Prog/univer/пркз/TrainStation/TrainStation/TrainStation/obj/x86/Debug/TrainStation.exe
+/home/maks/Prog/univer/пркз/TrainStation/TrainStation/TrainStation/obj/x86/Debug/TrainStation.pdb
+/home/maks/Prog/univer/пркз/TrainStation/TrainStation/TrainStation/bin/Debug/Newtonsoft.Json.dll
+/home/maks/Prog/univer/пркз/TrainStation/TrainStation/TrainStation/bin/Debug/Newtonsoft.Json.xml
+/home/maks/Prog/univer/пркз/TrainStation/TrainStation/TrainStation/obj/x86/Debug/TrainStation.csproj.CopyComplete
