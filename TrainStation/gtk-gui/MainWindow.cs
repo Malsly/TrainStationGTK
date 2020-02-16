@@ -3,6 +3,14 @@
 
 public partial class MainWindow
 {
+	private global::Gtk.UIManager UIManager;
+
+	private global::Gtk.Action daAction;
+
+	private global::Gtk.Action dwaAction;
+
+	private global::Gtk.Action dwaAction1;
+
 	private global::Gtk.Fixed fixed1;
 
 	private global::Gtk.VBox PassangerProps;
@@ -21,12 +29,57 @@ public partial class MainWindow
 
 	private global::Gtk.TextView EmailTextView;
 
-	private global::Gtk.Button BookTicket;
+	private global::Gtk.Button Regitration;
+
+	private global::Gtk.VBox Place;
+
+	private global::Gtk.Entry placeDeparture;
+
+	private global::Gtk.Entry placeArrival;
+
+	private global::Gtk.VBox PlaceTextView;
+
+	private global::Gtk.TextView placeDepartueTextView;
+
+	private global::Gtk.TextView placeArrivalTextView;
+
+	private global::Gtk.TextView TextAttention;
+
+	private global::Gtk.Button ChooseTrainBtn;
+
+	private global::Gtk.ComboBox TrainsListComboBox;
+
+	private global::Gtk.ComboBox ChoosVanComboBox;
+
+	private global::Gtk.Button TicketingBtn;
+
+	private global::Gtk.HBox TextViewComboBoxes;
+
+	private global::Gtk.TextView TrainsTextView;
+
+	private global::Gtk.TextView VansTextView;
+
+	private global::Gtk.TextView SeatTextView;
+
+	private global::Gtk.ComboBox ChooseSeatComboBox;
 
 	protected virtual void Build()
 	{
 		global::Stetic.Gui.Initialize(this);
 		// Widget MainWindow
+		this.UIManager = new global::Gtk.UIManager();
+		global::Gtk.ActionGroup w1 = new global::Gtk.ActionGroup("Default");
+		this.daAction = new global::Gtk.Action("daAction", global::Mono.Unix.Catalog.GetString("da"), null, null);
+		this.daAction.ShortLabel = global::Mono.Unix.Catalog.GetString("da");
+		w1.Add(this.daAction, null);
+		this.dwaAction = new global::Gtk.Action("dwaAction", global::Mono.Unix.Catalog.GetString("dwa"), null, null);
+		this.dwaAction.ShortLabel = global::Mono.Unix.Catalog.GetString("dwa");
+		w1.Add(this.dwaAction, null);
+		this.dwaAction1 = new global::Gtk.Action("dwaAction1", global::Mono.Unix.Catalog.GetString("dwa"), null, null);
+		this.dwaAction1.ShortLabel = global::Mono.Unix.Catalog.GetString("dwa");
+		w1.Add(this.dwaAction1, null);
+		this.UIManager.InsertActionGroup(w1, 0);
+		this.AddAccelGroup(this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString("MainWindow");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
@@ -43,39 +96,42 @@ public partial class MainWindow
 		this.NamePassanger = new global::Gtk.Entry();
 		this.NamePassanger.CanFocus = true;
 		this.NamePassanger.Name = "NamePassanger";
+		this.NamePassanger.Text = global::Mono.Unix.Catalog.GetString(" ");
 		this.NamePassanger.IsEditable = true;
 		this.NamePassanger.InvisibleChar = '•';
 		this.PassangerProps.Add(this.NamePassanger);
-		global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.PassangerProps[this.NamePassanger]));
-		w1.Position = 0;
-		w1.Expand = false;
-		w1.Fill = false;
+		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.PassangerProps[this.NamePassanger]));
+		w2.Position = 0;
+		w2.Expand = false;
+		w2.Fill = false;
 		// Container child PassangerProps.Gtk.Box+BoxChild
 		this.Telephone = new global::Gtk.Entry();
 		this.Telephone.CanFocus = true;
 		this.Telephone.Name = "Telephone";
+		this.Telephone.Text = global::Mono.Unix.Catalog.GetString(" ");
 		this.Telephone.IsEditable = true;
 		this.Telephone.InvisibleChar = '•';
 		this.PassangerProps.Add(this.Telephone);
-		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.PassangerProps[this.Telephone]));
-		w2.Position = 1;
-		w2.Expand = false;
-		w2.Fill = false;
+		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.PassangerProps[this.Telephone]));
+		w3.Position = 1;
+		w3.Expand = false;
+		w3.Fill = false;
 		// Container child PassangerProps.Gtk.Box+BoxChild
 		this.Email = new global::Gtk.Entry();
 		this.Email.CanFocus = true;
 		this.Email.Name = "Email";
+		this.Email.Text = global::Mono.Unix.Catalog.GetString(" ");
 		this.Email.IsEditable = true;
 		this.Email.InvisibleChar = '•';
 		this.PassangerProps.Add(this.Email);
-		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.PassangerProps[this.Email]));
-		w3.Position = 2;
-		w3.Expand = false;
-		w3.Fill = false;
+		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.PassangerProps[this.Email]));
+		w4.Position = 2;
+		w4.Expand = false;
+		w4.Fill = false;
 		this.fixed1.Add(this.PassangerProps);
-		global::Gtk.Fixed.FixedChild w4 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.PassangerProps]));
-		w4.X = 23;
-		w4.Y = 23;
+		global::Gtk.Fixed.FixedChild w5 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.PassangerProps]));
+		w5.X = 23;
+		w5.Y = 23;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.PassangerPropsTextView = new global::Gtk.VBox();
 		this.PassangerPropsTextView.WidthRequest = 80;
@@ -89,8 +145,8 @@ public partial class MainWindow
 		this.NameTextView.Name = "NameTextView";
 		this.NameTextView.Editable = false;
 		this.PassangerPropsTextView.Add(this.NameTextView);
-		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.PassangerPropsTextView[this.NameTextView]));
-		w5.Position = 0;
+		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.PassangerPropsTextView[this.NameTextView]));
+		w6.Position = 0;
 		// Container child PassangerPropsTextView.Gtk.Box+BoxChild
 		this.TelephoneTextView = new global::Gtk.TextView();
 		this.TelephoneTextView.Buffer.Text = global::Mono.Unix.Catalog.GetString("Telephone");
@@ -98,39 +154,193 @@ public partial class MainWindow
 		this.TelephoneTextView.Name = "TelephoneTextView";
 		this.TelephoneTextView.Editable = false;
 		this.PassangerPropsTextView.Add(this.TelephoneTextView);
-		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.PassangerPropsTextView[this.TelephoneTextView]));
-		w6.Position = 1;
+		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.PassangerPropsTextView[this.TelephoneTextView]));
+		w7.Position = 1;
 		// Container child PassangerPropsTextView.Gtk.Box+BoxChild
 		this.EmailTextView = new global::Gtk.TextView();
 		this.EmailTextView.Buffer.Text = global::Mono.Unix.Catalog.GetString("Email");
 		this.EmailTextView.CanFocus = true;
 		this.EmailTextView.Name = "EmailTextView";
 		this.PassangerPropsTextView.Add(this.EmailTextView);
-		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.PassangerPropsTextView[this.EmailTextView]));
-		w7.Position = 2;
+		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.PassangerPropsTextView[this.EmailTextView]));
+		w8.Position = 2;
 		this.fixed1.Add(this.PassangerPropsTextView);
-		global::Gtk.Fixed.FixedChild w8 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.PassangerPropsTextView]));
-		w8.X = 223;
-		w8.Y = 28;
+		global::Gtk.Fixed.FixedChild w9 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.PassangerPropsTextView]));
+		w9.X = 223;
+		w9.Y = 28;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.BookTicket = new global::Gtk.Button();
-		this.BookTicket.CanFocus = true;
-		this.BookTicket.Name = "BookTicket";
-		this.BookTicket.UseUnderline = true;
-		this.BookTicket.Label = global::Mono.Unix.Catalog.GetString("Book Ticket");
-		this.fixed1.Add(this.BookTicket);
-		global::Gtk.Fixed.FixedChild w9 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.BookTicket]));
-		w9.X = 149;
-		w9.Y = 147;
+		this.Regitration = new global::Gtk.Button();
+		this.Regitration.CanFocus = true;
+		this.Regitration.Name = "Regitration";
+		this.Regitration.UseUnderline = true;
+		this.Regitration.Label = global::Mono.Unix.Catalog.GetString("Registration");
+		this.fixed1.Add(this.Regitration);
+		global::Gtk.Fixed.FixedChild w10 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.Regitration]));
+		w10.X = 149;
+		w10.Y = 147;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.Place = new global::Gtk.VBox();
+		this.Place.Name = "Place";
+		this.Place.Spacing = 6;
+		// Container child Place.Gtk.Box+BoxChild
+		this.placeDeparture = new global::Gtk.Entry();
+		this.placeDeparture.CanFocus = true;
+		this.placeDeparture.Name = "placeDeparture";
+		this.placeDeparture.IsEditable = true;
+		this.placeDeparture.InvisibleChar = '•';
+		this.Place.Add(this.placeDeparture);
+		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.Place[this.placeDeparture]));
+		w11.Position = 0;
+		w11.Expand = false;
+		w11.Fill = false;
+		// Container child Place.Gtk.Box+BoxChild
+		this.placeArrival = new global::Gtk.Entry();
+		this.placeArrival.CanFocus = true;
+		this.placeArrival.Name = "placeArrival";
+		this.placeArrival.IsEditable = true;
+		this.placeArrival.InvisibleChar = '•';
+		this.Place.Add(this.placeArrival);
+		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.Place[this.placeArrival]));
+		w12.Position = 1;
+		w12.Expand = false;
+		w12.Fill = false;
+		this.fixed1.Add(this.Place);
+		global::Gtk.Fixed.FixedChild w13 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.Place]));
+		w13.X = 27;
+		w13.Y = 225;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.PlaceTextView = new global::Gtk.VBox();
+		this.PlaceTextView.WidthRequest = 94;
+		this.PlaceTextView.HeightRequest = 65;
+		this.PlaceTextView.Name = "PlaceTextView";
+		this.PlaceTextView.Spacing = 6;
+		// Container child PlaceTextView.Gtk.Box+BoxChild
+		this.placeDepartueTextView = new global::Gtk.TextView();
+		this.placeDepartueTextView.Buffer.Text = global::Mono.Unix.Catalog.GetString("Place Departure");
+		this.placeDepartueTextView.CanFocus = true;
+		this.placeDepartueTextView.Name = "placeDepartueTextView";
+		this.placeDepartueTextView.Editable = false;
+		this.PlaceTextView.Add(this.placeDepartueTextView);
+		global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.PlaceTextView[this.placeDepartueTextView]));
+		w14.Position = 0;
+		// Container child PlaceTextView.Gtk.Box+BoxChild
+		this.placeArrivalTextView = new global::Gtk.TextView();
+		this.placeArrivalTextView.Buffer.Text = global::Mono.Unix.Catalog.GetString("Place Arrival");
+		this.placeArrivalTextView.CanFocus = true;
+		this.placeArrivalTextView.Name = "placeArrivalTextView";
+		this.placeArrivalTextView.Editable = false;
+		this.PlaceTextView.Add(this.placeArrivalTextView);
+		global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.PlaceTextView[this.placeArrivalTextView]));
+		w15.Position = 1;
+		this.fixed1.Add(this.PlaceTextView);
+		global::Gtk.Fixed.FixedChild w16 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.PlaceTextView]));
+		w16.X = 212;
+		w16.Y = 229;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.TextAttention = new global::Gtk.TextView();
+		this.TextAttention.CanFocus = true;
+		this.TextAttention.Name = "TextAttention";
+		this.TextAttention.Editable = false;
+		this.TextAttention.Overwrite = true;
+		this.fixed1.Add(this.TextAttention);
+		global::Gtk.Fixed.FixedChild w17 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.TextAttention]));
+		w17.X = 470;
+		w17.Y = 431;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.ChooseTrainBtn = new global::Gtk.Button();
+		this.ChooseTrainBtn.CanFocus = true;
+		this.ChooseTrainBtn.Name = "ChooseTrainBtn";
+		this.ChooseTrainBtn.UseUnderline = true;
+		this.ChooseTrainBtn.Label = global::Mono.Unix.Catalog.GetString("Choose Train");
+		this.fixed1.Add(this.ChooseTrainBtn);
+		global::Gtk.Fixed.FixedChild w18 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.ChooseTrainBtn]));
+		w18.X = 149;
+		w18.Y = 314;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.TrainsListComboBox = global::Gtk.ComboBox.NewText();
+		this.TrainsListComboBox.Name = "TrainsListComboBox";
+		this.fixed1.Add(this.TrainsListComboBox);
+		global::Gtk.Fixed.FixedChild w19 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.TrainsListComboBox]));
+		w19.X = 345;
+		w19.Y = 216;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.ChoosVanComboBox = global::Gtk.ComboBox.NewText();
+		this.ChoosVanComboBox.Name = "ChoosVanComboBox";
+		this.fixed1.Add(this.ChoosVanComboBox);
+		global::Gtk.Fixed.FixedChild w20 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.ChoosVanComboBox]));
+		w20.X = 549;
+		w20.Y = 213;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.TicketingBtn = new global::Gtk.Button();
+		this.TicketingBtn.CanFocus = true;
+		this.TicketingBtn.Name = "TicketingBtn";
+		this.TicketingBtn.UseUnderline = true;
+		this.TicketingBtn.Label = global::Mono.Unix.Catalog.GetString("Ticketing");
+		this.fixed1.Add(this.TicketingBtn);
+		global::Gtk.Fixed.FixedChild w21 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.TicketingBtn]));
+		w21.X = 527;
+		w21.Y = 63;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.TextViewComboBoxes = new global::Gtk.HBox();
+		this.TextViewComboBoxes.WidthRequest = 513;
+		this.TextViewComboBoxes.Name = "TextViewComboBoxes";
+		this.TextViewComboBoxes.Spacing = 100;
+		// Container child TextViewComboBoxes.Gtk.Box+BoxChild
+		this.TrainsTextView = new global::Gtk.TextView();
+		this.TrainsTextView.Buffer.Text = global::Mono.Unix.Catalog.GetString("Trains");
+		this.TrainsTextView.CanFocus = true;
+		this.TrainsTextView.Name = "TrainsTextView";
+		this.TextViewComboBoxes.Add(this.TrainsTextView);
+		global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.TextViewComboBoxes[this.TrainsTextView]));
+		w22.Position = 0;
+		// Container child TextViewComboBoxes.Gtk.Box+BoxChild
+		this.VansTextView = new global::Gtk.TextView();
+		this.VansTextView.Buffer.Text = global::Mono.Unix.Catalog.GetString("Vans");
+		this.VansTextView.CanFocus = true;
+		this.VansTextView.Name = "VansTextView";
+		this.TextViewComboBoxes.Add(this.VansTextView);
+		global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.TextViewComboBoxes[this.VansTextView]));
+		w23.Position = 1;
+		// Container child TextViewComboBoxes.Gtk.Box+BoxChild
+		this.SeatTextView = new global::Gtk.TextView();
+		this.SeatTextView.Buffer.Text = global::Mono.Unix.Catalog.GetString("Seats");
+		this.SeatTextView.CanFocus = true;
+		this.SeatTextView.Name = "SeatTextView";
+		this.TextViewComboBoxes.Add(this.SeatTextView);
+		global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.TextViewComboBoxes[this.SeatTextView]));
+		w24.Position = 2;
+		this.fixed1.Add(this.TextViewComboBoxes);
+		global::Gtk.Fixed.FixedChild w25 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.TextViewComboBoxes]));
+		w25.X = 346;
+		w25.Y = 186;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.ChooseSeatComboBox = global::Gtk.ComboBox.NewText();
+		this.ChooseSeatComboBox.Name = "ChooseSeatComboBox";
+		this.fixed1.Add(this.ChooseSeatComboBox);
+		global::Gtk.Fixed.FixedChild w26 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.ChooseSeatComboBox]));
+		w26.X = 749;
+		w26.Y = 210;
 		this.Add(this.fixed1);
 		if ((this.Child != null))
 		{
 			this.Child.ShowAll();
 		}
-		this.DefaultWidth = 556;
-		this.DefaultHeight = 470;
+		this.DefaultWidth = 1182;
+		this.DefaultHeight = 484;
+		this.Place.Hide();
+		this.PlaceTextView.Hide();
+		this.ChooseTrainBtn.Hide();
+		this.TrainsListComboBox.Hide();
+		this.ChoosVanComboBox.Hide();
+		this.TicketingBtn.Hide();
+		this.TextViewComboBoxes.Hide();
+		this.ChooseSeatComboBox.Hide();
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
-		this.BookTicket.Clicked += new global::System.EventHandler(this.OnRegestrationClicked);
+		this.Regitration.Clicked += new global::System.EventHandler(this.OnRegestrationClicked);
+		this.ChooseTrainBtn.Clicked += new global::System.EventHandler(this.OnChooseTrainClicked);
+		this.TrainsListComboBox.Changed += new global::System.EventHandler(this.OnTrainsListComboBoxChanged);
+		this.ChoosVanComboBox.Changed += new global::System.EventHandler(this.OnChoosVanComboBoxChanged);
+		this.ChooseSeatComboBox.Changed += new global::System.EventHandler(this.OnChooseSeatComboBoxChanged);
 	}
 }

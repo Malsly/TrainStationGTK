@@ -6,25 +6,35 @@ namespace TrainStation
 {
     public class Station
     {
-        private List<Train> TrainList { get; set; }
-        private List<Passanger> PassangerList { get; set; }
+        private List<Train> trainList = new List<Train>();
+        private List<Passanger> passangerList = new List<Passanger>();
+
+        public List<Train> TrainList   
+        {
+            get { return trainList; }    
+        }
+
+        public List<Passanger> PassangerList   
+        {
+            get { return passangerList; }     
+        }
 
         public Station(List<Train> TrainList, List<Passanger> PassangerList)
         {
-            this.TrainList = TrainList;
-            this.PassangerList = PassangerList;
+            this.trainList = TrainList;
+            this.passangerList = PassangerList;
         }
 
         public Passanger RegestrationPassanger(string Name, string Telephone, string Email) {
             Passanger passanger = new Passanger(Name, Telephone, Email);
-            PassangerList.Add(passanger);
+            passangerList.Add(passanger);
             return passanger;
         }
 
         public Train AddTrain(string PlaceDeparture, string PlaceArrival, Dictionary<string, DateTime> RouteAndDate, Dictionary<string, int> RouteAndPrice, List<Van> VanList) 
         {
             Train train = new Train(PlaceDeparture, PlaceArrival, RouteAndDate, RouteAndPrice, VanList);
-            TrainList.Add(train);
+            trainList.Add(train);
             return train;
         }
 

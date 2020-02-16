@@ -37,7 +37,7 @@ namespace TrainStation
 
         public Seat PickSeat(int Number, string Type)
         {
-            Seat pickedSeat = SeatList.FirstOrDefault(i => i.Number == Number && i.Type == Type && !i.IsOccupied);
+            Seat pickedSeat = SeatList.FirstOrDefault(i => i.Number == Number && i.Type == Type && !i.IsOccuped);
             return pickedSeat;
         }
     }

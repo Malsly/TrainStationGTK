@@ -1,19 +1,19 @@
 ﻿<Properties StartupConfiguration="{3019C851-E2A2-4AD9-B151-2C717649056A}|Default">
   <MonoDevelop.Ide.ItemProperties.TrainStation PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TrainStation/Ticket.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TrainStation/MainWindow.cs">
     <Files>
-      <File FileName="TrainStation/Train.cs" Line="38" Column="13" />
-      <File FileName="TrainStation/Van.cs" Line="40" Column="15" />
-      <File FileName="TrainStation/Seat.cs" Line="30" Column="32" />
-      <File FileName="TrainStation/Station.cs" Line="40" Column="46" />
-      <File FileName="TrainStation/Ticket.cs" Line="1" Column="1" />
+      <File FileName="TrainStation/MainWindow.cs" Line="33" Column="10" />
+      <File FileName="TrainStation/Train.cs" Line="32" Column="9" />
+      <File FileName="TrainStation/Station.cs" Line="25" Column="28" />
+      <File FileName="TrainStation/Passanger.cs" Line="4" Column="27" />
+      <File FileName="TrainStation/Deb.cs" Line="10" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="TrainStation" expanded="True">
             <Node name="TrainStation" expanded="True">
-              <Node name="Ticket.cs" selected="True" />
+              <Node name="MainWindow.cs" selected="True" />
             </Node>
           </Node>
         </State>

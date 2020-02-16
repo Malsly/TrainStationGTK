@@ -7,6 +7,15 @@ namespace TrainStation
         private string telephone { get; set; }
         private string email { get; set; }
 
+        public static bool IsValidUser(string name, string telephone, string email) 
+        { 
+            if(name != "" && telephone != "" && email != "") 
+            {
+                return true; 
+            }
+            return false;
+        }
+
         public string Name   // property
         {
             get { return name; }   // get method
