@@ -3,21 +3,46 @@ namespace TrainStation
 {
     public class Ticket
     {
-        private Passanger Passanger { get; set; }
-        private int Price { get; set; }
-        private Van Van { get; set; }
-        private Train Train { get; set; }
-        private Seat Seat { get; set; }
-        private string PlaceArrival { get; set; }
+        private Passanger passanger { get; set; }
+        private int price { get; set; }
+        private Van van { get; set; }
+        private Train train { get; set; }
+        private Seat seat { get; set; }
+        private string placeArrival { get; set; }
+
+        public Passanger Passanger
+        {
+            get { return passanger; }   // get method
+        }
+        public int Price
+        {
+            get { return price; }   // get method
+        }
+        public Van Van
+        {
+            get { return van; }   // get method
+        }
+        public Train Train
+        {
+            get { return train; }   // get method
+        }
+        public Seat Seat
+        {
+            get { return seat; }   // get method
+        }
+        public string PlaceArrival
+        {
+            get { return placeArrival; }   // get method
+        }
 
         public Ticket(Passanger Passanger, int Price, Van Van, Train Train, Seat Seat, string PlaceArrival)
         {
-            this.Passanger = Passanger;
-            this.Price = Price;
-            this.Van = Van;
-            this.Train = Train;
-            this.Seat = Seat;
-            this.PlaceArrival = PlaceArrival;
+            this.passanger = Passanger;
+            this.price = Price;
+            this.van = Van;
+            this.train = Train;
+            this.seat = Seat;
+            this.placeArrival = PlaceArrival;
         }
 
         public Ticket SendToMail() 

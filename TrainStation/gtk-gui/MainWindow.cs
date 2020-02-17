@@ -341,6 +341,7 @@ public partial class MainWindow
 		this.ChooseTrainBtn.Clicked += new global::System.EventHandler(this.OnChooseTrainClicked);
 		this.TrainsListComboBox.Changed += new global::System.EventHandler(this.OnTrainsListComboBoxChanged);
 		this.ChoosVanComboBox.Changed += new global::System.EventHandler(this.OnChoosVanComboBoxChanged);
+		this.TicketingBtn.Clicked += new global::System.EventHandler(this.OnTicketingBtnClicked);
 		this.ChooseSeatComboBox.Changed += new global::System.EventHandler(this.OnChooseSeatComboBoxChanged);
 	}
 }

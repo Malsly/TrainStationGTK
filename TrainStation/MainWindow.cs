@@ -9,9 +9,15 @@ public partial class MainWindow : Gtk.Window
     static List<Passanger> PassangerList = new List<Passanger>();
     Station station = new Station(TrainList, PassangerList);
 
+    Seat choosedSeat;
+    Van choosedVan;
+    Train choosedTrain;
+    Passanger passanger;
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
+
+
         Dictionary<string, int> RouteAndPriceKievChernigiv = new Dictionary<string, int>
         {
             { "Kiev", 0 },
@@ -74,8 +80,8 @@ public partial class MainWindow : Gtk.Window
             train.CreateVansForTrain(2, "Cupe");
             foreach(Van van in train.VanList) 
             {
-                van.CreateSeatForVan(15, "Main");
-                van.CreateSeatForVan(15, "Side");
+                van.CreateSeatForVan(3, "Main");
+                van.CreateSeatForVan(3, "Side");
             }
         }
 
@@ -85,7 +91,7 @@ public partial class MainWindow : Gtk.Window
         Seat.AddTypeAndPrice("Main", 0);
         Seat.AddTypeAndPrice("Side", 0);
 
-        Deb.Print(station.TrainList[0].RouteAndDate);
+        //Deb.Print(station.TrainList[0].RouteAndDate);
 
         Build();
     }
@@ -104,7 +110,7 @@ public partial class MainWindow : Gtk.Window
 
         if (Passanger.IsValidUser(name, telephone, email)) 
         {
-            Passanger passanger = station.RegestrationPassanger(name, telephone, email);
+            passanger = station.RegestrationPassanger(name, telephone, email);
             this.Place.Show();
             this.PlaceTextView.Show();
             this.ChooseTrainBtn.Show();
@@ -117,8 +123,8 @@ public partial class MainWindow : Gtk.Window
         }
 
 
-        Deb.Print(station.TrainList);
-        Deb.Print(station.PassangerList);
+        //Deb.Print(station.TrainList);
+        //Deb.Print(station.PassangerList);
     }
 
     protected void OnChooseTrainClicked(object sender, EventArgs e)
@@ -167,7 +173,7 @@ public partial class MainWindow : Gtk.Window
                 RouteAndTrain.Add((string)this.TrainsListComboBox.Model.GetValue(iter, 0), (Train)this.TrainsListComboBox.Model.GetValue(iter, 1));
             } while (this.TrainsListComboBox.Model.IterNext(ref iter));
         }
-        Train choosedTrain;
+
         RouteAndTrain.TryGetValue(this.TrainsListComboBox.ActiveText, out choosedTrain);
 
 
@@ -194,18 +200,58 @@ public partial class MainWindow : Gtk.Window
             } while (this.ChoosVanComboBox.Model.IterNext(ref iter));
         }
 
-        Van choosedVan;
+        NumberAndVan.TryGetValue(Convert.ToInt32(this.ChoosVanComboBox.Active), out choosedVan);
 
-        NumberAndVan.TryGetValue(Convert.ToInt32(this.ChoosVanComboBox.ActiveText), out choosedVan);
-
-        Deb.Print(choosedVan.Class);
+        Deb.Print(choosedVan.Number);
 
         this.ChooseSeatComboBox.Show();
+
+        ListStore DataSourceForSeats = new ListStore(typeof(int), typeof(Seat));
+        this.ChooseSeatComboBox.Model = DataSourceForSeats;
+
+        foreach (Seat seat in choosedVan.SeatList)
+        {
+            if (seat.IsOccuped == false) 
+            {
+                DataSourceForSeats.AppendValues(seat.Number, seat);
+            }
+        }
     }
 
     protected void OnChooseSeatComboBoxChanged(object sender, EventArgs e)
     {
-        string choosedSeat = this.ChooseSeatComboBox.ActiveText;
+        Dictionary<int, Seat> NumberAndSeat = new Dictionary<int, Seat>();
+
+        TreeIter iter;
+        if (this.ChooseSeatComboBox.Model.GetIterFirst(out iter))
+        {
+            do
+            {
+                NumberAndSeat.Add((int)this.ChooseSeatComboBox.Model.GetValue(iter, 0), (Seat)this.ChooseSeatComboBox.Model.GetValue(iter, 1));
+            } while (this.ChooseSeatComboBox.Model.IterNext(ref iter));
+        }
+
+        NumberAndSeat.TryGetValue(Convert.ToInt32(this.ChooseSeatComboBox.Active), out choosedSeat);
+
+        //Deb.Print(choosedSeat.Number);
+
         this.TicketingBtn.Show();
+    }
+
+    protected void OnTicketingBtnClicked(object sender, EventArgs e)
+    {
+        string placeArrivalText = this.placeArrival.Text;
+        int priceForRoute;
+        int priceForVanClass;
+        int priceForSeatType;
+        choosedTrain.RouteAndPrice.TryGetValue(placeArrivalText, out priceForRoute);
+        Van.ClassAndPrice.TryGetValue(choosedVan.Class, out priceForVanClass);
+        Seat.TypeAndPrice.TryGetValue(choosedSeat.Type, out priceForSeatType);
+
+        int price = priceForRoute + priceForSeatType + priceForVanClass;
+
+        choosedSeat.IsOccuped = true;
+
+        Deb.Print(new Ticket(passanger, price, choosedVan, choosedTrain, choosedSeat, placeArrivalText));
     }
 }
