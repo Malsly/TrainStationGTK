@@ -11,7 +11,7 @@ namespace TrainStation
         private string placeArrival { get; set; }
         private Dictionary<string, DateTime> routeAndDate { get; set; }
         private Dictionary<string, int> routeAndPrice = new Dictionary<string, int>();
-        private List<Van> VanList { get; set; }
+        private List<Van> vanList { get; set; }
 
         public string PlaceDeparture   // property
         {
@@ -30,6 +30,11 @@ namespace TrainStation
             get { return routeAndPrice; }   // get method
         }
 
+        public List<Van> VanList   // property
+        {
+            get { return vanList; }   // get method
+        }
+
         public Dictionary<string, DateTime> RouteAndDate   // property
         {
             get { return routeAndDate; }   // get method
@@ -41,7 +46,7 @@ namespace TrainStation
             this.PlaceArrival = PlaceArrival;
             this.routeAndPrice = RouteAndPrice;
             this.routeAndDate = RouteAndDate;
-            this.VanList = VanList;
+            this.vanList = VanList;
         }
 
         public void AddRouteAndPrice(string city, int price) 
@@ -58,6 +63,21 @@ namespace TrainStation
         {
             Van pickedVan = VanList.FirstOrDefault(i => i.Class == Class&& i.Number == Number);
             return pickedVan;
+        }
+
+        public void CreateVansForTrain(int countOfVans, string classOfVans) 
+        {
+            int lastNumberOfVan = 0;
+            if (vanList.Count != 0) lastNumberOfVan = vanList[vanList.Count - 1].Number + 1;
+             for (int i = lastNumberOfVan; i < lastNumberOfVan + countOfVans; i++) 
+             {
+                AddVan(new List<Seat>(), classOfVans, i);
+             }
+        }
+
+        public void AddVan(List<Seat> seatList, string classVan, int number) 
+        {
+            VanList.Add(new Van(seatList, classVan, number));
         }
     }
 }

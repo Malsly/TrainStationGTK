@@ -20,6 +20,14 @@ public partial class MainWindow : Gtk.Window
             { "Chernigiv", 100 }
         };
 
+        Dictionary<string, DateTime> RouteAndDateKievChernigiv = new Dictionary<string, DateTime>
+        {
+            { "Kiev", DateTime.Now  },
+            { "Kozelets", DateTime.Now + new TimeSpan(0, 3, 0, 0) },
+            { "Desna", DateTime.Now + new TimeSpan(0, 4, 0, 0) },
+            { "Chernigiv", DateTime.Now + new TimeSpan(1, 0, 0, 0) }
+        };
+
         Dictionary<string, int> RouteAndPriceKievLugansk = new Dictionary<string, int>
         {
             { "Kiev", 0 },
@@ -27,6 +35,15 @@ public partial class MainWindow : Gtk.Window
             { "Charkiv", 45 },
             { "Zhitomir", 75 },
             { "Lugansk", 130 }
+        };
+
+        Dictionary<string, DateTime> RouteAndDateKievLugansk = new Dictionary<string, DateTime>
+        {
+            { "Kiev", DateTime.Now  },
+            { "Kozelets", DateTime.Now + new TimeSpan(0, 3, 0, 0) },
+            { "Charkiv", DateTime.Now + new TimeSpan(1, 0, 0, 0) },
+            { "Zhitomir", DateTime.Now + new TimeSpan(1, 5, 0, 0) },
+            { "Lugansk", DateTime.Now + new TimeSpan(1, 13, 0, 0) }
         };
 
         Dictionary<string, int> RouteAndPriceLvivKiev = new Dictionary<string, int>
@@ -38,9 +55,38 @@ public partial class MainWindow : Gtk.Window
             { "Kiev", 330 }
         };
 
-        Train KeivChernigiv = station.AddTrain("Kiev", "Chernigiv", new Dictionary<string, DateTime>(), RouteAndPriceKievChernigiv, new List<Van>());
-        station.AddTrain("Kiev", "Lugansk", new Dictionary<string, DateTime>(), RouteAndPriceKievLugansk, new List<Van>());
-        station.AddTrain("Lviv", "Kiev", new Dictionary<string, DateTime>(), RouteAndPriceLvivKiev, new List<Van>());
+        Dictionary<string, DateTime> RouteAndDateLvivKiev = new Dictionary<string, DateTime>
+        {
+            { "Lviv", DateTime.Now },
+            { "Gorodishe", DateTime.Now + new TimeSpan(0, 3, 0, 0) },
+            { "Donetsk", DateTime.Now + new TimeSpan(0, 8, 0, 0) },
+            { "Pomoshna", DateTime.Now + new TimeSpan(0, 16, 0, 0) },
+            { "Kiev", DateTime.Now + new TimeSpan(1, 3, 0, 0) }
+        };
+
+        station.AddTrain("Kiev", "Chernigiv", RouteAndDateKievChernigiv, RouteAndPriceKievChernigiv, new List<Van>());
+        station.AddTrain("Kiev", "Lugansk", RouteAndDateKievLugansk, RouteAndPriceKievLugansk, new List<Van>());
+        station.AddTrain("Lviv", "Kiev", RouteAndDateLvivKiev, RouteAndPriceLvivKiev, new List<Van>());
+
+        foreach(Train train in station.TrainList) 
+        {
+            train.CreateVansForTrain(10, "Plackart");
+            train.CreateVansForTrain(2, "Cupe");
+            foreach(Van van in train.VanList) 
+            {
+                van.CreateSeatForVan(15, "Main");
+                van.CreateSeatForVan(15, "Side");
+            }
+        }
+
+        Van.AddClassAndPrice("Plackart", 0);
+        Van.AddClassAndPrice("Cupe", 20);
+
+        Seat.AddTypeAndPrice("Main", 0);
+        Seat.AddTypeAndPrice("Side", 0);
+
+        Deb.Print(station.TrainList[0].RouteAndDate);
+
         Build();
     }
 
@@ -123,16 +169,37 @@ public partial class MainWindow : Gtk.Window
         }
         Train choosedTrain;
         RouteAndTrain.TryGetValue(this.TrainsListComboBox.ActiveText, out choosedTrain);
-        Deb.Print(choosedTrain);
-    
+
+
+        ListStore DataSourceForVans = new ListStore(typeof(int), typeof(Van));
+        this.ChoosVanComboBox.Model = DataSourceForVans;
+
+        foreach(Van van in choosedTrain.VanList) 
+        {
+            DataSourceForVans.AppendValues(van.Number, van); 
+        }
+
     }
 
     protected void OnChoosVanComboBoxChanged(object sender, EventArgs e)
     {
-        string choosedTrain = this.TrainsListComboBox.ActiveText;
+        Dictionary<int, Van> NumberAndVan = new Dictionary<int, Van>();
 
+        TreeIter iter;
+        if (this.ChoosVanComboBox.Model.GetIterFirst(out iter))
+        {
+            do
+            {
+                NumberAndVan.Add((int)this.ChoosVanComboBox.Model.GetValue(iter, 0), (Van)this.ChoosVanComboBox.Model.GetValue(iter, 1));
+            } while (this.ChoosVanComboBox.Model.IterNext(ref iter));
+        }
 
-        string choosedVan = this.ChoosVanComboBox.ActiveText;
+        Van choosedVan;
+
+        NumberAndVan.TryGetValue(Convert.ToInt32(this.ChoosVanComboBox.ActiveText), out choosedVan);
+
+        Deb.Print(choosedVan.Class);
+
         this.ChooseSeatComboBox.Show();
     }
 
