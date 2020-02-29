@@ -7,3 +7,11 @@
 /home/maks/Prog/univer/пркз/TrainStation/TrainStation/TrainStation/bin/Debug/Newtonsoft.Json.dll
 /home/maks/Prog/univer/пркз/TrainStation/TrainStation/TrainStation/bin/Debug/Newtonsoft.Json.xml
 /home/maks/Prog/univer/пркз/TrainStation/TrainStation/TrainStation/obj/x86/Debug/TrainStation.csproj.CopyComplete
+/media/maks/FAC64D55C64D1375/univer/PRKZ/TrainStation/TrainStation/bin/Debug/TrainStation.exe
+/media/maks/FAC64D55C64D1375/univer/PRKZ/TrainStation/TrainStation/bin/Debug/TrainStation.pdb
+/media/maks/FAC64D55C64D1375/univer/PRKZ/TrainStation/TrainStation/bin/Debug/Newtonsoft.Json.dll
+/media/maks/FAC64D55C64D1375/univer/PRKZ/TrainStation/TrainStation/bin/Debug/Newtonsoft.Json.xml
+/media/maks/FAC64D55C64D1375/univer/PRKZ/TrainStation/TrainStation/obj/x86/Debug/TrainStation.csprojAssemblyReference.cache
+/media/maks/FAC64D55C64D1375/univer/PRKZ/TrainStation/TrainStation/obj/x86/Debug/TrainStation.csproj.CopyComplete
+/media/maks/FAC64D55C64D1375/univer/PRKZ/TrainStation/TrainStation/obj/x86/Debug/TrainStation.exe
+/media/maks/FAC64D55C64D1375/univer/PRKZ/TrainStation/TrainStation/obj/x86/Debug/TrainStation.pdb
