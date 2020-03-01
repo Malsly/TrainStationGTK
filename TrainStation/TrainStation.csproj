@@ -64,7 +64,6 @@
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Deb.cs" />
     <Compile Include="Models\Van.cs" />
     <Compile Include="Models\Station.cs" />
     <Compile Include="Models\Passanger.cs" />
@@ -72,6 +71,7 @@
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\Train.cs" />
     <Compile Include="DataAccess\SerailizationAndDeserealization.cs" />
+    <Compile Include="Test\Deb.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

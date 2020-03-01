@@ -97,6 +97,7 @@
             <child>
               <widget class="Gtk.TextView" id="NameTextView">
                 <property name="MemberName" />
+                <property name="Sensitive">False</property>
                 <property name="CanFocus">True</property>
                 <property name="Editable">False</property>
                 <property name="Text" translatable="yes">Name</property>
@@ -109,6 +110,7 @@
             <child>
               <widget class="Gtk.TextView" id="TelephoneTextView">
                 <property name="MemberName" />
+                <property name="Sensitive">False</property>
                 <property name="CanFocus">True</property>
                 <property name="Editable">False</property>
                 <property name="Text" translatable="yes">Telephone</property>
@@ -121,6 +123,7 @@
             <child>
               <widget class="Gtk.TextView" id="EmailTextView">
                 <property name="MemberName" />
+                <property name="Sensitive">False</property>
                 <property name="CanFocus">True</property>
                 <property name="Text" translatable="yes">Email</property>
               </widget>
@@ -157,6 +160,7 @@
             <child>
               <widget class="Gtk.Entry" id="placeDeparture">
                 <property name="MemberName" />
+                <property name="Tooltip" translatable="yes" />
                 <property name="CanFocus">True</property>
                 <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
@@ -171,6 +175,7 @@
             <child>
               <widget class="Gtk.Entry" id="placeArrival">
                 <property name="MemberName" />
+                <property name="Tooltip" translatable="yes" />
                 <property name="CanFocus">True</property>
                 <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
@@ -191,13 +196,14 @@
         <child>
           <widget class="Gtk.VBox" id="PlaceTextView">
             <property name="MemberName" />
-            <property name="WidthRequest">94</property>
+            <property name="WidthRequest">104</property>
             <property name="HeightRequest">65</property>
             <property name="Visible">False</property>
-            <property name="Spacing">6</property>
+            <property name="Spacing">13</property>
             <child>
               <widget class="Gtk.TextView" id="placeDepartueTextView">
                 <property name="MemberName" />
+                <property name="Sensitive">False</property>
                 <property name="CanFocus">True</property>
                 <property name="Editable">False</property>
                 <property name="Text" translatable="yes">Place Departure</property>
@@ -210,6 +216,7 @@
             <child>
               <widget class="Gtk.TextView" id="placeArrivalTextView">
                 <property name="MemberName" />
+                <property name="Sensitive">False</property>
                 <property name="CanFocus">True</property>
                 <property name="Editable">False</property>
                 <property name="Text" translatable="yes">Place Arrival</property>
@@ -276,7 +283,7 @@
           </widget>
           <packing>
             <property name="X">549</property>
-            <property name="Y">213</property>
+            <property name="Y">216</property>
           </packing>
         </child>
         <child>
@@ -295,51 +302,6 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.HBox" id="TextViewComboBoxes">
-            <property name="MemberName" />
-            <property name="WidthRequest">513</property>
-            <property name="Visible">False</property>
-            <property name="Spacing">100</property>
-            <child>
-              <widget class="Gtk.TextView" id="TrainsTextView">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Text" translatable="yes">Trains</property>
-              </widget>
-              <packing>
-                <property name="Position">0</property>
-                <property name="AutoSize">True</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.TextView" id="VansTextView">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Text" translatable="yes">Vans</property>
-              </widget>
-              <packing>
-                <property name="Position">1</property>
-                <property name="AutoSize">True</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.TextView" id="SeatTextView">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Text" translatable="yes">Seats</property>
-              </widget>
-              <packing>
-                <property name="Position">2</property>
-                <property name="AutoSize">True</property>
-              </packing>
-            </child>
-          </widget>
-          <packing>
-            <property name="X">346</property>
-            <property name="Y">186</property>
-          </packing>
-        </child>
-        <child>
           <widget class="Gtk.ComboBox" id="ChooseSeatComboBox">
             <property name="MemberName" />
             <property name="Visible">False</property>
@@ -349,7 +311,47 @@
           </widget>
           <packing>
             <property name="X">749</property>
-            <property name="Y">210</property>
+            <property name="Y">216</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.TextView" id="SeatTextView">
+            <property name="MemberName" />
+            <property name="Visible">False</property>
+            <property name="Sensitive">False</property>
+            <property name="CanFocus">True</property>
+            <property name="Text" translatable="yes">Seats</property>
+          </widget>
+          <packing>
+            <property name="X">750</property>
+            <property name="Y">190</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.TextView" id="TrainsTextView">
+            <property name="MemberName" />
+            <property name="Visible">False</property>
+            <property name="Sensitive">False</property>
+            <property name="CanFocus">True</property>
+            <property name="Editable">False</property>
+            <property name="Text" translatable="yes">Trains</property>
+          </widget>
+          <packing>
+            <property name="X">343</property>
+            <property name="Y">190</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.TextView" id="VansTextView">
+            <property name="MemberName" />
+            <property name="Visible">False</property>
+            <property name="Sensitive">False</property>
+            <property name="CanFocus">True</property>
+            <property name="Text" translatable="yes">Vans</property>
+          </widget>
+          <packing>
+            <property name="X">550</property>
+            <property name="Y">190</property>
           </packing>
         </child>
       </widget>

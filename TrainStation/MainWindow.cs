@@ -165,10 +165,6 @@ public partial class MainWindow : Gtk.Window
             this.PlaceTextView.Hide();
             this.ChooseTrainBtn.Hide();
         }
-
-
-        //Deb.Print(station.TrainList);
-        //Deb.Print(station.PassangerList);
     }
 
     protected void OnChooseTrainClicked(object sender, EventArgs e)
@@ -182,7 +178,8 @@ public partial class MainWindow : Gtk.Window
         if (placeArrivalText != "" && placeDepartureText != "")
         {
             this.TrainsListComboBox.Show();
-            foreach(Train train in station.TrainList) 
+            this.TrainsTextView.Show();
+            foreach (Train train in station.TrainList) 
             {
                 if(train.PlaceDeparture.Contains(placeDepartureText) && train.RouteAndPrice.ContainsKey(placeArrivalText)) 
                 {
@@ -200,6 +197,7 @@ public partial class MainWindow : Gtk.Window
         else
         {
             this.TrainsListComboBox.Hide();
+            this.TrainsTextView.Hide();
         }
     }
 
@@ -208,7 +206,7 @@ public partial class MainWindow : Gtk.Window
         Dictionary<string, Train> RouteAndTrain = new Dictionary<string, Train>();
         RouteAndTrain.Clear();
         this.ChoosVanComboBox.Show();
-
+        this.VansTextView.Show();
         TreeIter iter;
         if (this.TrainsListComboBox.Model.GetIterFirst(out iter))
         {
@@ -249,6 +247,7 @@ public partial class MainWindow : Gtk.Window
         Deb.Print(choosedVan.Number);
 
         this.ChooseSeatComboBox.Show();
+        this.SeatTextView.Show();
 
         ListStore DataSourceForSeats = new ListStore(typeof(int), typeof(Seat));
         this.ChooseSeatComboBox.Model = DataSourceForSeats;
