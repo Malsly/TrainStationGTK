@@ -16,59 +16,74 @@ public partial class MainWindow : Gtk.Window
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
+        //Dictionary<string, int> RouteAndPriceKievChernigiv = new Dictionary<string, int>
+        //{
+        //    { "Kiev", 0 },
+        //    { "Kozelets", 30 },
+        //    { "Desna", 60},
+        //    { "Chernigiv", 100 }
+        //};
 
+        //Dictionary<string, int> RouteAndPriceKievLugansk = new Dictionary<string, int>
+        //{
+        //    { "Kiev", 0 },
+        //    { "Kozelets", 30 },
+        //    { "Charkiv", 45 },
+        //    { "Zhitomir", 75 },
+        //    { "Lugansk", 130 }
+        //};
 
-        Dictionary<string, int> RouteAndPriceKievChernigiv = new Dictionary<string, int>
-        {
-            { "Kiev", 0 },
-            { "Kozelets", 30 },
-            { "Desna", 60},
-            { "Chernigiv", 100 }
-        };
+        //Dictionary<string, int> RouteAndPriceLvivKiev = new Dictionary<string, int>
+        //{
+        //    { "Lviv", 0 },
+        //    { "Gorodishe", 90 },
+        //    { "Donetsk", 145 },
+        //    { "Pomoshna", 275 },
+        //    { "Kiev", 330 }
+        //};
 
-        Dictionary<string, DateTime> RouteAndDateKievChernigiv = new Dictionary<string, DateTime>
-        {
-            { "Kiev", DateTime.Now  },
-            { "Kozelets", DateTime.Now + new TimeSpan(0, 3, 0, 0) },
-            { "Desna", DateTime.Now + new TimeSpan(0, 4, 0, 0) },
-            { "Chernigiv", DateTime.Now + new TimeSpan(1, 0, 0, 0) }
-        };
+        //Dictionary<string, DateTime> RouteAndDateKievChernigiv = new Dictionary<string, DateTime>
+        //{
+        //    { "Kiev", DateTime.Now  },
+        //    { "Kozelets", DateTime.Now + new TimeSpan(0, 3, 0, 0) },
+        //    { "Desna", DateTime.Now + new TimeSpan(0, 4, 0, 0) },
+        //    { "Chernigiv", DateTime.Now + new TimeSpan(1, 0, 0, 0) }
+        //};
 
-        Dictionary<string, int> RouteAndPriceKievLugansk = new Dictionary<string, int>
-        {
-            { "Kiev", 0 },
-            { "Kozelets", 30 },
-            { "Charkiv", 45 },
-            { "Zhitomir", 75 },
-            { "Lugansk", 130 }
-        };
+        //Dictionary<string, DateTime> RouteAndDateKievLugansk = new Dictionary<string, DateTime>
+        //{
+        //    { "Kiev", DateTime.Now  },
+        //    { "Kozelets", DateTime.Now + new TimeSpan(0, 3, 0, 0) },
+        //    { "Charkiv", DateTime.Now + new TimeSpan(1, 0, 0, 0) },
+        //    { "Zhitomir", DateTime.Now + new TimeSpan(1, 5, 0, 0) },
+        //    { "Lugansk", DateTime.Now + new TimeSpan(1, 13, 0, 0) }
+        //};
 
-        Dictionary<string, DateTime> RouteAndDateKievLugansk = new Dictionary<string, DateTime>
-        {
-            { "Kiev", DateTime.Now  },
-            { "Kozelets", DateTime.Now + new TimeSpan(0, 3, 0, 0) },
-            { "Charkiv", DateTime.Now + new TimeSpan(1, 0, 0, 0) },
-            { "Zhitomir", DateTime.Now + new TimeSpan(1, 5, 0, 0) },
-            { "Lugansk", DateTime.Now + new TimeSpan(1, 13, 0, 0) }
-        };
+        //Dictionary<string, DateTime> RouteAndDateLvivKiev = new Dictionary<string, DateTime>
+        //{
+        //    { "Lviv", DateTime.Now },
+        //    { "Gorodishe", DateTime.Now + new TimeSpan(0, 3, 0, 0) },
+        //    { "Donetsk", DateTime.Now + new TimeSpan(0, 8, 0, 0) },
+        //    { "Pomoshna", DateTime.Now + new TimeSpan(0, 16, 0, 0) },
+        //    { "Kiev", DateTime.Now + new TimeSpan(1, 3, 0, 0) }
+        //};
 
-        Dictionary<string, int> RouteAndPriceLvivKiev = new Dictionary<string, int>
-        {
-            { "Lviv", 0 },
-            { "Gorodishe", 90 },
-            { "Donetsk", 145 },
-            { "Pomoshna", 275 },
-            { "Kiev", 330 }
-        };
+        SerailizationAndDeserealization ser = new SerailizationAndDeserealization();
+        //ser.SerializeRouteAndPrice("RouteAndPriceKievChernigiv.json", RouteAndPriceKievChernigiv);
+        //ser.SerializeRouteAndPrice("RouteAndPriceKievLugansk.json", RouteAndPriceKievLugansk);
+        //ser.SerializeRouteAndPrice("RouteAndPriceLvivKiev.json", RouteAndPriceLvivKiev);
 
-        Dictionary<string, DateTime> RouteAndDateLvivKiev = new Dictionary<string, DateTime>
-        {
-            { "Lviv", DateTime.Now },
-            { "Gorodishe", DateTime.Now + new TimeSpan(0, 3, 0, 0) },
-            { "Donetsk", DateTime.Now + new TimeSpan(0, 8, 0, 0) },
-            { "Pomoshna", DateTime.Now + new TimeSpan(0, 16, 0, 0) },
-            { "Kiev", DateTime.Now + new TimeSpan(1, 3, 0, 0) }
-        };
+        //ser.SerializeRouteAndDate("RouteAndDateKievChernigiv.json", RouteAndDateKievChernigiv);
+        //ser.SerializeRouteAndDate("RouteAndDateKievLugansk.json", RouteAndDateKievLugansk);
+        //ser.SerializeRouteAndDate("RouteAndDateLvivKiev.json", RouteAndDateLvivKiev);
+
+        var RouteAndPriceKievChernigiv = ser.DeserializeRouteAndPrice("RouteAndPriceKievChernigiv.json");
+        var RouteAndPriceKievLugansk = ser.DeserializeRouteAndPrice("RouteAndPriceKievLugansk.json");
+        var RouteAndPriceLvivKiev = ser.DeserializeRouteAndPrice("RouteAndPriceLvivKiev.json");
+
+        var RouteAndDateKievChernigiv = ser.DeserializeRouteAndDate("RouteAndDateKievChernigiv.json");
+        var RouteAndDateKievLugansk = ser.DeserializeRouteAndDate("RouteAndDateKievLugansk.json");
+        var RouteAndDateLvivKiev = ser.DeserializeRouteAndDate("RouteAndDateLvivKiev.json");
 
         station.AddTrain("Kiev", "Chernigiv", RouteAndDateKievChernigiv, RouteAndPriceKievChernigiv, new List<Van>());
         station.AddTrain("Kiev", "Lugansk", RouteAndDateKievLugansk, RouteAndPriceKievLugansk, new List<Van>());
@@ -90,8 +105,6 @@ public partial class MainWindow : Gtk.Window
 
         Seat.AddTypeAndPrice("Main", 0);
         Seat.AddTypeAndPrice("Side", 0);
-
-        //Deb.Print(station.TrainList[0].RouteAndDate);
 
         Build();
     }
