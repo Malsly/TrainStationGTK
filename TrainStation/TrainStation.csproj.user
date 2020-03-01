@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <StartAction>Project</StartAction>
+    <EnvironmentVariables>
+      <Variable name="WithSerialize" value="False" />
+    </EnvironmentVariables>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'StartWithSerialize' ">
+    <StartAction>Project</StartAction>
+    <EnvironmentVariables>
+      <Variable name="WithSerialize" value="True" />
+    </EnvironmentVariables>
+  </PropertyGroup>
+</Project>

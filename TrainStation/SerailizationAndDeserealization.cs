@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Json;
 using Newtonsoft.Json;
 
 namespace TrainStation
 {
     public class SerailizationAndDeserealization
     {
-        public SerailizationAndDeserealization()
-        {
-
-        }
 
         public void SerializeListRoutesAndDates(string fileName, List<Dictionary<string, DateTime>> RoutesAndDates) 
         {
