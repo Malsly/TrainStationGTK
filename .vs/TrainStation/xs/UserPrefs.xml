@@ -9,8 +9,7 @@
         <State name="__root__">
           <Node name="TrainStation" expanded="True">
             <Node name="TrainStation" expanded="True">
-              <Node name="UserInterface" expanded="True" />
-              <Node name="MainWindow.cs" selected="True" />
+              <Node name="UserInterface" selected="True" />
             </Node>
           </Node>
         </State>
