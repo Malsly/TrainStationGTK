@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Gtk;
 using TrainStation;
 
@@ -68,7 +69,24 @@ public partial class MainWindow : Gtk.Window
         //    { "Kiev", DateTime.Now + new TimeSpan(1, 3, 0, 0) }
         //};
 
+        //List<Dictionary<string, DateTime>> RoutesAndDates = new List<Dictionary<string, DateTime>> 
+        //{
+        //    {RouteAndDateKievChernigiv},
+        //    {RouteAndDateKievLugansk},
+        //    {RouteAndDateLvivKiev} 
+        //};
+
+        //List<Dictionary<string, int>> RoutesAndPrices = new List<Dictionary<string, int>>
+        //{
+        //    {RouteAndPriceKievChernigiv},
+        //    {RouteAndPriceKievLugansk},
+        //    {RouteAndPriceLvivKiev}
+        //};
+
         SerailizationAndDeserealization ser = new SerailizationAndDeserealization();
+        //ser.SerializeListRoutesAndDates("RoutesAndDates.json", RoutesAndDates);
+        //ser.SerializeListRoutesAndPrices("RoutesAndPrices.json", RoutesAndPrices);
+
         //ser.SerializeRouteAndPrice("RouteAndPriceKievChernigiv.json", RouteAndPriceKievChernigiv);
         //ser.SerializeRouteAndPrice("RouteAndPriceKievLugansk.json", RouteAndPriceKievLugansk);
         //ser.SerializeRouteAndPrice("RouteAndPriceLvivKiev.json", RouteAndPriceLvivKiev);
@@ -77,17 +95,23 @@ public partial class MainWindow : Gtk.Window
         //ser.SerializeRouteAndDate("RouteAndDateKievLugansk.json", RouteAndDateKievLugansk);
         //ser.SerializeRouteAndDate("RouteAndDateLvivKiev.json", RouteAndDateLvivKiev);
 
-        var RouteAndPriceKievChernigiv = ser.DeserializeRouteAndPrice("RouteAndPriceKievChernigiv.json");
-        var RouteAndPriceKievLugansk = ser.DeserializeRouteAndPrice("RouteAndPriceKievLugansk.json");
-        var RouteAndPriceLvivKiev = ser.DeserializeRouteAndPrice("RouteAndPriceLvivKiev.json");
+        var RoutesAndDates = ser.DeserializeListRoutesAndDates("RoutesAndDates.json");
+        var RoutesAndPrices = ser.DeserializeListRoutesAndPrices("RoutesAndPrices.json");
 
-        var RouteAndDateKievChernigiv = ser.DeserializeRouteAndDate("RouteAndDateKievChernigiv.json");
-        var RouteAndDateKievLugansk = ser.DeserializeRouteAndDate("RouteAndDateKievLugansk.json");
-        var RouteAndDateLvivKiev = ser.DeserializeRouteAndDate("RouteAndDateLvivKiev.json");
+        //var RouteAndPriceKievChernigiv = ser.DeserializeRouteAndPrice("RouteAndPriceKievChernigiv.json");
+        //var RouteAndPriceKievLugansk = ser.DeserializeRouteAndPrice("RouteAndPriceKievLugansk.json");
+        //var RouteAndPriceLvivKiev = ser.DeserializeRouteAndPrice("RouteAndPriceLvivKiev.json");
 
-        station.AddTrain("Kiev", "Chernigiv", RouteAndDateKievChernigiv, RouteAndPriceKievChernigiv, new List<Van>());
-        station.AddTrain("Kiev", "Lugansk", RouteAndDateKievLugansk, RouteAndPriceKievLugansk, new List<Van>());
-        station.AddTrain("Lviv", "Kiev", RouteAndDateLvivKiev, RouteAndPriceLvivKiev, new List<Van>());
+        //var RouteAndDateKievChernigiv = ser.DeserializeRouteAndDate("RouteAndDateKievChernigiv.json");
+        //var RouteAndDateKievLugansk = ser.DeserializeRouteAndDate("RouteAndDateKievLugansk.json");
+        //var RouteAndDateLvivKiev = ser.DeserializeRouteAndDate("RouteAndDateLvivKiev.json");
+
+        var DatesAndPrices = RoutesAndDates.Zip(RoutesAndPrices, (n, w) => new { Routes = n, Prices = w });
+
+        foreach (var rp in DatesAndPrices)
+        {
+            station.AddTrain(rp.Routes.Keys.First(), rp.Routes.Keys.Last(), rp.Routes, rp.Prices, new List<Van>());
+        }
 
         foreach(Train train in station.TrainList) 
         {
@@ -105,6 +129,8 @@ public partial class MainWindow : Gtk.Window
 
         Seat.AddTypeAndPrice("Main", 0);
         Seat.AddTypeAndPrice("Side", 0);
+
+        //Deb.Print(station.TrainList[0].VanList[0].SeatList);
 
         Build();
     }

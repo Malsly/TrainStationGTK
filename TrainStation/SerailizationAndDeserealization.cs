@@ -13,6 +13,50 @@ namespace TrainStation
 
         }
 
+        public void SerializeListRoutesAndDates(string fileName, List<Dictionary<string, DateTime>> RoutesAndDates) 
+        {
+            using (StreamWriter writer = File.CreateText(fileName))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(writer, RoutesAndDates);
+            }
+        }
+
+        public List<Dictionary<string, DateTime>> DeserializeListRoutesAndDates(string fileName)
+        {
+            using (StreamReader file = File.OpenText(fileName))
+            {
+                using (JsonTextReader reader = new JsonTextReader(file))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    List<Dictionary<string, DateTime>> RoutesAndDates = serializer.Deserialize<List<Dictionary<string, DateTime>>>(reader);
+                    return RoutesAndDates;
+                }
+            }
+        }
+
+        public void SerializeListRoutesAndPrices(string fileName, List<Dictionary<string, int>> RoutesAndPrices)
+        {
+            using (StreamWriter writer = File.CreateText(fileName))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(writer, RoutesAndPrices);
+            }
+        }
+
+        public List<Dictionary<string, int>> DeserializeListRoutesAndPrices(string fileName)
+        {
+            using (StreamReader file = File.OpenText(fileName))
+            {
+                using (JsonTextReader reader = new JsonTextReader(file))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    List<Dictionary<string, int>> RoutesAndPrices = serializer.Deserialize<List<Dictionary<string, int>>>(reader);
+                    return RoutesAndPrices;
+                }
+            }
+        }
+
         public void SerializeRouteAndPrice(string fileName, Dictionary<string, int> RouteAndPrice) 
         {
             using (StreamWriter writer = File.CreateText(fileName))
