@@ -2,14 +2,14 @@
   <MonoDevelop.Ide.ItemProperties.TrainStation PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="TrainStation/MainWindow.cs">
     <Files>
-      <File FileName="TrainStation/SerailizationAndDeserealization.cs" Line="32" Column="1" />
-      <File FileName="TrainStation/MainWindow.cs" Line="116" Column="90" />
+      <File FileName="TrainStation/MainWindow.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="TrainStation" expanded="True">
             <Node name="TrainStation" expanded="True">
+              <Node name="UserInterface" expanded="True" />
               <Node name="MainWindow.cs" selected="True" />
             </Node>
           </Node>
