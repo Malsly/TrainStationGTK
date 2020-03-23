@@ -4,6 +4,8 @@
     <StartAction>Project</StartAction>
     <EnvironmentVariables>
       <Variable name="WithSerialize" value="False" />
+      <Variable name="RoutesAndPrices" value="RoutesAndPrices.json" />
+      <Variable name="RoutesAndDates" value="RoutesAndDates.json" />
     </EnvironmentVariables>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'StartWithSerialize' ">

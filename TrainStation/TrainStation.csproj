@@ -72,6 +72,7 @@
     <Compile Include="Models\Train.cs" />
     <Compile Include="DataAccess\SerailizationAndDeserealization.cs" />
     <Compile Include="Test\Deb.cs" />
+    <Compile Include="DataAccess\InitalizateData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
